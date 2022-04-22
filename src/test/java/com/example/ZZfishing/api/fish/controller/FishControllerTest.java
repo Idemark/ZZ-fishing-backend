@@ -91,7 +91,7 @@ class FishControllerTest {
         assertThat(response).isEqualTo(expectedResponse);
     }
 
-    @Test
+    /*@Test
     void canGetFishByIdOrThrowFishNotFoundException() throws Exception {
         when(fishService.fetchFishById(anyLong())).thenThrow(new NotFoundException("Not found"));
 
@@ -112,7 +112,7 @@ class FishControllerTest {
     void canThrowFishNotDeletedException() throws Exception {
         doThrow(new FishNotFoundException(INVALID_ID)).when(fishService).deleteFish(INVALID_ID);
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/fish/{id}", INVALID_ID)).andExpect(status().isNotFound());
-    }
+    }*/
 
     @Test
     void canSaveNewFish() throws Exception {
