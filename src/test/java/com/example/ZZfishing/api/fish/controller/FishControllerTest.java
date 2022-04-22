@@ -91,29 +91,6 @@ class FishControllerTest {
         assertThat(response).isEqualTo(expectedResponse);
     }
 
-    /*@Test
-    void canGetFishByIdOrThrowFishNotFoundException() throws Exception {
-        when(fishService.fetchFishById(anyLong())).thenThrow(new NotFoundException("Not found"));
-
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/fish/{id}", 10L))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status", is("failed")));
-
-        verify(fishService,times(1)).fetchFishById(anyLong());
-    }
-
-    @Test
-    void canFetchFishByIdOrThrowFishNotFoundWithInvalidId() throws Exception {
-        given(fishService.fetchFishById(INVALID_ID)).willThrow(new FishNotFoundException(INVALID_ID));
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/fish/{id}", INVALID_ID)).andExpect(status().isNotFound());
-    }
-
-    @Test
-    void canThrowFishNotDeletedException() throws Exception {
-        doThrow(new FishNotFoundException(INVALID_ID)).when(fishService).deleteFish(INVALID_ID);
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/fish/{id}", INVALID_ID)).andExpect(status().isNotFound());
-    }*/
-
     @Test
     void canSaveNewFish() throws Exception {
         //object
@@ -175,28 +152,4 @@ class FishControllerTest {
         fish.setLength(10);
         return fish;
     }
-
-    /*@Test
-    void canGetAllFishes() throws Exception {
-        given(fishService.getFishes()).willReturn(fishList);
-
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/fish"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()", is(fishList.size())));
-    }*/
-
-    /*@Test
-    void canGetFishById() throws Exception {
-        Fish fish = getFish(VALID_ID);
-
-        given(fishService.fetchFishById(anyLong())).willReturn(fish);
-
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/fish/{id}", VALID_ID))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.weight", is(fish.getWeight())))
-                .andExpect(jsonPath("$.length", is(fish.getLength())))
-                .andExpect(jsonPath("$.fishSpecies", is(fish.getFishSpecies())));
-
-        verify(fishService,times(1)).fetchFishById(anyLong());
-    }*/
 }

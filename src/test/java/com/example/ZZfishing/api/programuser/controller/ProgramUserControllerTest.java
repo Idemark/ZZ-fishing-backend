@@ -70,39 +70,12 @@ class ProgramUserControllerTest {
     }
 
     @Test
-    void canThrowProgramUserIdNotFoundException() throws Exception {
-
-
-
-        /*ProgramUser programUser = getProgramUser(VALID_ID);
-
-        when(programUserService.fetchProgramUserById(2L))
-                .thenThrow(ProgramUserNotFoundException.class);
-        //doThrow(new ProgramUserNotFoundException(1L)).when(programUserService).fetchProgramUserById(1L);
-
-        mockMvc.perform(get("/api/v1/programUser/{id}", 2L))
-                .andExpect(status().isNotFound());*/
-    }
-
-    @Test
     public void findAllProgramUsers_invalidRequest_throwNoDataFound() throws Throwable {
         Assertions.assertThatThrownBy(() ->
                         mockMvc.perform(get("/api/v1/programUser/{id}")).andExpect(status().isInternalServerError())
                                 .andExpect(status().is4xxClientError())
                                 .andExpect(content().string("{\"error\":\"not found\"}")));
     }
-
-    /*@Test
-    void canThrowProgramUserIdNotFoundException() throws Exception {
-        //doThrow(ProgramUserNotFoundException.class).when(programUserService).fetchProgramUserById(anyLong());
-        //doThrow(PROGRAMUSER_NOT_FOUND_EXCEPTION).when(programUserService.fetchProgramUserById(1L));
-        //String exceptionParam = "not_found";
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/programUser/{id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isNotFound())
-                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ProgramUserNotFoundException))
-                .andExpect(result -> assertEquals("bad arguments", Objects.requireNonNull(result.getResolvedException()).getMessage()));
-    }*/
 
     @Test
     void canDeleteProgramUser() throws Exception {
